@@ -1,0 +1,25 @@
+# swagger/paths/water/{id}/delete.yaml
+tags:
+  - Water
+summary: Delete an entry of Water by id
+operationId: deleteWaterInfo
+description: 'Delete an entry of Water by id'
+security:
+  - bearerAuth: []
+parameters:
+  - in: path
+    name: id
+    required: true
+    schema:
+      type: string
+      example: '65ca67e7ae7f10c88b598384'
+responses:
+  '204':
+    description: 'Delete an entry of Water by id'
+
+  '404':
+    $ref: '../../../components/responses/water/404-2.yaml'
+  '401':
+    $ref: '../../../components/responses/401.yaml'
+  '500':
+    $ref: '../../../components/responses/500.yaml'

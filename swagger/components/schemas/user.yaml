@@ -1,0 +1,44 @@
+# swagger/components/schemas/user.yaml
+
+type: object
+required:
+  - _id
+  - name
+  - email
+
+properties:
+  _id:
+    description: "User's id"
+    type: string
+    example: '65e4decdd286b30065d54af9'
+  name:
+    description: "User's name"
+    type: string
+    example: 'John Doe'
+  email:
+    description: "User's email"
+    type: string
+    example: 'example@gmail.com'
+  gender:
+    description: "user's gender"
+    type: string
+    enum: ['woman', 'man']
+  weight:
+    description: 'Your weight in kilograms:'
+    type: number
+    example: 55
+  sportHours:
+    description: 'The time of active participation in sports'
+    type: number
+    example: 45
+
+  waterAmount:
+    description: 'how much water you will drink'
+    type: number
+    example: 1.8
+
+  photo:
+    description: "User's photo"
+    type: string
+    format: binary
+    example: 'https://res.cloudinary.com/delucsi8d/image/upload/v1722184393/avatar_gwefos.png'

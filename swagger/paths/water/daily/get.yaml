@@ -1,0 +1,63 @@
+#/swagger/paths/water/get.yaml
+tags:
+  - Water
+summary: Get entries of water for the day
+operationId: getInfoWaterDay
+description: 'Get entries of water for the day'
+security:
+  - bearerAuth: []
+parameters:
+  - in: query
+    name: date
+    schema:
+      type: string
+      example: '2024-07-25'
+  - in: query
+    name: sortOrder
+    schema:
+      type: string
+      enum: ['asc', 'desc']
+      default: 'asc'
+  - in: query
+    name: sortBy
+    schema:
+      type: string
+      default: 'time'
+
+responses:
+  '200':
+    description: Successfully fetched water consumption for the day!
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully fetched water consumption for the day!
+            totalWaterAmount:
+              type: number
+              example: 300
+            water:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    $ref: '../../../components/schemas/water.yaml'
+                waterCount:
+                  type: number
+                  example: 5
+  '401':
+    $ref: '../../../components/responses/401.yaml'
+  '500':
+    $ref: '../../../components/responses/500.yaml'

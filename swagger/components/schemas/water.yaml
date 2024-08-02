@@ -1,0 +1,25 @@
+# swagger/components/schemas/water.yaml
+
+type: object
+required:
+  - _id
+  - time
+  - amount
+  - userId
+properties:
+  _id:
+    description: "Info water's id"
+    type: string
+    example: '65e4decdd286b30065d54af9'
+  time:
+    description: 'time of entry'
+    type: string
+    example: '2024-07-24T10:12'
+  amount:
+    description: 'The value of the water used'
+    type: integer
+    example: 50
+  userId:
+    description: "User's parent id"
+    type: string
+    example: '65e4decdd286b30065d54af9'
