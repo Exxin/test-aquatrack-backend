@@ -22,6 +22,7 @@ const allowedOrigins = [
 
   //деплой-продакшен
   'https://test-aquatrack-7l94.vercel.app',
+  'https://test-aquatrack-n6kk.vercel.app',
   'https://test-aquatrack-backend.onrender.com',
 ];
 
