@@ -21,8 +21,8 @@ const allowedOrigins = [
   'http://localhost:3000',
 
  //деплой-продакшен
-  'https://aquatrack-taupe.vercel.app',
-  'https://aqua-track-backend.onrender.com',
+  'https://test-aquatrack-7l94.vercel.app',
+  'https://test-aquatrack-backend.onrender.com',
 ];
 
 export const setupServer = () => {
