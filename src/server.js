@@ -15,15 +15,15 @@ import { swaggerDocs } from './middlewares/swaggerDocs.js';
 const PORT = Number(env('PORT', '3000'));
 
 //дозволені домени, з яких можна робити запити
-const allowedOrigins = [
-  //локалхост для тестування
-  'http://localhost:5173',
-  'http://localhost:3000',
+// const allowedOrigins = [
+//   //локалхост для тестування
+//   'http://localhost:5173',
+//   'http://localhost:3000',
 
-  //деплой-продакшен
-  'https://test-aquatrack.vercel.app',
-  'https://test-aquatrack-backend.onrender.com',
-];
+//   //деплой-продакшен
+//   'https://test-aquatrack.vercel.app',
+//   'https://test-aquatrack-backend.onrender.com',
+// ];
 
 export const setupServer = () => {
   const app = express();
