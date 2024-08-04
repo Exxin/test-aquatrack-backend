@@ -38,21 +38,11 @@ export const setupServer = () => {
   next();
 });
   // app.use(cors());
-  app.use(
-    cors({
-      origin: function (origin, callback) {
-        // Перевірте, чи є `origin` у списку дозволених
-        if (allowedOrigins.includes(origin) || !origin) {
-          // Якщо так, дозволити запит
-          callback(null, true);
-        } else {
-          // Інакше заборонити запит
-          callback(new Error('Not allowed by CORS'));
-        }
-      },
-      credentials: true, // Дозволити передачу файлів cookie
-    }),
-  );
+  app.use(cors({
+    origin: 'https://test-aquatrack.vercel.app',
+    credentials: true,
+    preflightContinue: true,
+  }));
 
   app.use(cookieParser());
   app.use('/uploads', express.static(UPLOAD_DIR));
