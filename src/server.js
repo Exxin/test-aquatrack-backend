@@ -22,7 +22,6 @@ const allowedOrigins = [
 
   //деплой-продакшен
   'https://test-aquatrack.vercel.app',
-  'https://test-aquatrack-backend.onrender.com',
 ];
 
 const corsOptions = {
@@ -38,7 +37,16 @@ const corsOptions = {
 
 export const setupServer = () => {
   const app = express();
-
+  app.use(cors({
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use((req, res, next) => {
