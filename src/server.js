@@ -16,7 +16,11 @@ const PORT = Number(env('PORT', '3000'));
 
 // Дозволені домени, з яких можна робити запити
 const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
   'https://test-aquatrack.vercel.app',
+  'https://test-aquatrack-c71h.vercel.app',
+  'https://test-aquatrack-backend.onrender.com',
 ];
 
 const corsOptions = {
