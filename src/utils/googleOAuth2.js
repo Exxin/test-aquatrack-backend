@@ -37,6 +37,7 @@ export const generateAuthUrl = () => {
       idToken: response.tokens.id_token,
       audience: env('GOOGLE_AUTH_CLIENT_ID'),
     });
+  
     return ticket;
   };
 
