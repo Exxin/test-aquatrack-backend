@@ -19,6 +19,7 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
   'https://aquatrack-one.vercel.app',
+  'https://test-aquatrack-backend.onrender.com'
 ];
 
 const corsOptions = {
@@ -56,14 +57,11 @@ export const setupServer = () => {
     }),
   );
 
-    // Встановлюємо CORS заголовки для всіх відповідей
-  // app.use((req, res, next) => {
-  //   res.header('Access-Control-Allow-Origin', 'https://test-aquatrack.vercel.app');
-  //   res.header('Access-Control-Allow-Credentials', 'true');
-  //   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-  //   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  //   next();
-  // });
+  app.get('/', (req, res) => {
+    res.status(200).json({
+      message: "Welcome to the Aquatrack API!",
+    });
+  });
 
   app.use(router);
 
