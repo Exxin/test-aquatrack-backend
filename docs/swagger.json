@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://aqua-track-backend.onrender.com"
+      "url": "https://test-aquatrack-backend.onrender.com"
     }
   ],
   "tags": [

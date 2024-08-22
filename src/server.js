@@ -18,9 +18,7 @@ const PORT = Number(env('PORT', '3000'));
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
-  'https://test-aquatrack.vercel.app',
   'https://aquatrack-one.vercel.app',
-  'https://test-aquatrack-backend.onrender.com',
 ];
 
 const corsOptions = {
