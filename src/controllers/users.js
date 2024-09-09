@@ -3,15 +3,15 @@ import { env } from '../utils/env.js';
 import { saveFileToUploadDir } from '../utils/saveFileToUploadDir.js';
 import { updateUser, getAllUsers } from '../services/users.js';
 import createHttpError from 'http-errors';
-import usersGoogle from '../db/models/user.js';
+import UsersGoogleCollection from '../db/models/user.js';
 
 export const createOrUpdateUser = async (userData) => {
   const { googleId, fullName, email, picture } = userData;
 
-  let user = await usersGoogle.findOne({ googleId });
+  let user = await UsersGoogleCollection.findOne({ googleId });
 
   if (!user) {
-    user = await usersGoogle.create({ googleId, fullName, email, picture });
+    user = await UsersGoogleCollection.create({ googleId, fullName, email, picture });
   } else {
     user.fullName = fullName;
     user.picture = picture;
@@ -22,7 +22,7 @@ export const createOrUpdateUser = async (userData) => {
 };
 
 export const getCurrentUser = async (req, res) => {
-  const user = await usersGoogle.findById(req.session.userId);
+  const user = await UsersGoogleCollection.findById(req.session.userId);
 
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
