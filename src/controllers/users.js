@@ -8,17 +8,17 @@ import usersGoogle from '../db/models/user.js';
 export const createOrUpdateUser = async (userData) => {
   const { googleId, fullName, email, picture } = userData;
 
-  let userGoogle = await usersGoogle.findOne({ googleId });
+  let user = await usersGoogle.findOne({ googleId });
 
-  if (!userGoogle) {
-    userGoogle = await usersGoogle.create({ googleId, fullName, email, picture });
+  if (!user) {
+    user = await usersGoogle.create({ googleId, fullName, email, picture });
   } else {
-    userGoogle.fullName = fullName;
-    userGoogle.picture = picture;
-    await userGoogle.save();
+    user.fullName = fullName;
+    user.picture = picture;
+    await user.save();
   }
 
-  return userGoogle;
+  return user;
 };
 
 export const getCurrentUser = async (req, res) => {
