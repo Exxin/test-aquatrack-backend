@@ -1,9 +1,11 @@
 // src/middlewares/authenticate.js
 
 import createHttpError from 'http-errors';
+import jwt from 'jsonwebtoken';
+import { env } from './env.js';
 
 import { SessionsCollection } from '../db/models/session.js';
-import { UsersCollection } from '../db/models/user.js';
+import { UsersCollection, UsersGoogleCollection } from '../db/models/user.js';
 
 export const authenticate = async (req, res, next) => {
   const authHeader = req.get('Authorization');
@@ -15,6 +17,17 @@ export const authenticate = async (req, res, next) => {
 
   const bearer = authHeader.split(' ')[0];
   const token = authHeader.split(' ')[1];
+
+  try {
+    const decoded = jwt.verify(token, env.JWT_SECRET);
+    req.userGoogle = await UsersGoogleCollection.findById(decoded.id);
+    if (!req.usersGoogle) {
+      throw createHttpError(404, 'User not found');
+    }
+    next();
+  } catch (error) {
+    next(createHttpError(401, 'Unauthorized'));
+  }
 
   if (bearer !== 'Bearer' || !token) {
     next(createHttpError(401, 'Auth header should be of type Bearer'));
