@@ -3,7 +3,7 @@ import { env } from '../utils/env.js';
 import { saveFileToUploadDir } from '../utils/saveFileToUploadDir.js';
 import { updateUser, getAllUsers } from '../services/users.js';
 import createHttpError from 'http-errors';
-import UsersGoogleCollection from '../db/models/user.js';
+import { UsersGoogleCollection } from '../db/models/user.js';
 
 export const createOrUpdateUser = async (userData) => {
   const { googleId, fullName, email, picture } = userData;
