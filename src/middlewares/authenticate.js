@@ -2,7 +2,7 @@
 
 import createHttpError from 'http-errors';
 import jwt from 'jsonwebtoken';
-import { env } from './env.js';
+import { env } from '../utils/env.js';
 
 import { SessionsCollection } from '../db/models/session.js';
 import { UsersCollection, UsersGoogleCollection } from '../db/models/user.js';
