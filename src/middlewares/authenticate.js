@@ -1,5 +1,3 @@
-// src/middlewares/authenticate.js
-
 import createHttpError from 'http-errors';
 import jwt from 'jsonwebtoken';
 import { env } from '../utils/env.js';
@@ -23,7 +21,7 @@ export const authenticate = async (req, res, next) => {
 
   try {
     // Перевірка та декодування токену
-    const decoded = jwt.verify(token, env.JWT_SECRET);
+    const decoded = jwt.verify(token, env('JWT_SECRET'));
     const user = await UsersGoogleCollection.findById(decoded.id);
 
     // Перевірка, чи існує користувач
