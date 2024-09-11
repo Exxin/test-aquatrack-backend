@@ -24,7 +24,7 @@ const allowedOrigins = [
 
 const CLIENT_ID = process.env['GOOGLE_AUTH_CLIENT_ID'];
 const CLIENT_SECRET = process.env['GOOGLE_AUTH_CLIENT_SECRET'];
-const REDIRECT_URI = 'http://localhost:3000/auth/callback';
+const REDIRECT_URI = 'https://test-aquatrack-backend.onrender.com/auth/callback';
 
 const corsOptions = {
   origin: (origin, callback) => {
