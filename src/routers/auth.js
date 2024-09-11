@@ -9,8 +9,6 @@ import {
 } from '../validation/auth.js';
 
 import {
-  getGoogleAuthUrl,
-  googleAuthCallback,
   loginUserController,
   registerUserController,
   requestResetEmailController,
@@ -21,8 +19,6 @@ import {
 import { validateBody } from '../middlewares/validateBody.js';
 
 const router = Router();
-router.get('/get-oauth-url', getGoogleAuthUrl);
-router.get('/auth/google/callback', googleAuthCallback);
 router.post(
   '/register',
   validateBody(registerUserSchema),

@@ -25,12 +25,6 @@ const usersSchema = new Schema(
   { timestamps: true, versionKey: false },
 );
 
-const userSchemaGoogle = new Schema({
-  googleId: { type: String, required: true },
-  fullName: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  picture: { type: String },
-});
 
 usersSchema.pre('save', function (next) {
   if (!this.name) {
@@ -46,5 +40,4 @@ usersSchema.methods.toJSON = function () {
 };
 
 export const UsersCollection = model('users', usersSchema);
-export const UsersGoogleCollection = model('usersGoogle', userSchemaGoogle);
 
