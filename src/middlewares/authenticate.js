@@ -1,7 +1,4 @@
 import createHttpError from 'http-errors';
-import jwt from 'jsonwebtoken';
-import { env } from '../utils/env.js';
-import { UsersGoogleCollection } from '../db/models/user.js';
 
 // Middleware для перевірки JWT
 export const authenticate = async (req, res, next) => {
