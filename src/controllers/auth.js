@@ -9,7 +9,6 @@ import {
   resetPassword,
 } from '../services/auth.js';
 import { THIRTY_DAYS } from '../constants/index.js';
-import { generateAuthUrl, validateCode } from '../utils/googleOAuth2.js';
 
 const setupSession = (res, session) => {
   res.cookie('refreshToken', session.refreshToken, {
@@ -96,31 +95,3 @@ export const resetPasswordController = async (req, res) => {
   });
 };
 
-export const getGoogleAuthUrl = (req, res) => {
-  try {
-    const url = generateAuthUrl();
-    res.status(200).json({ data: { url } });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-export const googleAuthCallback = async (req, res) => {
-  const { code } = req.query;
-
-  try {
-    const ticket = await validateCode(code);
-    const payload = ticket.getPayload();
-
-    const user = {
-      fullName: `${payload.given_name} ${payload.family_name}`,
-      email: payload.email,
-      picture: payload.picture,
-    };
-
-    // Реалізація створення токену для користувача
-    res.status(200).json({ user });
-  } catch (error) {
-    res.status(401).json({ message: error.message });
-  }
-};

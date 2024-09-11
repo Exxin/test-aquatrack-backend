@@ -18,21 +18,4 @@ export const authenticate = async (req, res, next) => {
   if (bearer !== 'Bearer' || !token) {
     return next(createHttpError(401, 'Auth header should be of type Bearer'));
   }
-
-  try {
-    // Перевірка та декодування токену
-    const decoded = jwt.verify(token, env('JWT_SECRET'));
-    const user = await UsersGoogleCollection.findById(decoded.id);
-
-    // Перевірка, чи існує користувач
-    if (!user) {
-      return next(createHttpError(404, 'User not found'));
-    }
-
-    req.userGoogle = user;
-    next();
-  } catch (error) {
-    // Обробка помилок перевірки токену
-    next(createHttpError(401, 'Unauthorized'));
-  }
 };
