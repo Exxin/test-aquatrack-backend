@@ -4,7 +4,7 @@ import { saveFileToUploadDir } from '../utils/saveFileToUploadDir.js';
 import { updateUser, getAllUsers } from '../services/users.js';
 import createHttpError from 'http-errors';
 // import { UsersGoogleCollection } from '../db/models/user.js';
-import { generateAuthUrl, validateCode } from '../utils/googleOAuth2.js';
+// import { generateAuthUrl, validateCode } from '../utils/googleOAuth2.js';
 
 // export const createOrUpdateUser = async (userData) => {
 //   const { googleId, fullName, email, picture } = userData;
