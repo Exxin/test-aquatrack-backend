@@ -17,8 +17,29 @@ import {
   refreshUserSessionController,
 } from '../controllers/auth.js';
 import { validateBody } from '../middlewares/validateBody.js';
+import env from "../utils/env.js";
 
 const router = Router();
+
+const client_id = env("GOOGLE_AUTH_CLIENT_ID");
+const redirect_uri = env("GOOGLE_AUTH_REDIRECT_URI");
+const scope = 'email profile';
+const response_type = 'code';
+const access_type = 'offline';
+const include_granted_scopes = 'true';
+
+router.get('/auth/google', (req, res) => {
+  const authURL = `https://accounts.google.com/o/oauth2/v2/auth?` +
+    `client_id=${client_id}&` +
+    `redirect_uri=${redirect_uri}&` +
+    `scope=${encodeURIComponent(scope)}&` +
+    `response_type=${response_type}&` +
+    `access_type=${access_type}&` +
+    `include_granted_scopes=${include_granted_scopes}`;
+
+  res.redirect(authURL);
+});
+
 router.post(
   '/register',
   validateBody(registerUserSchema),
