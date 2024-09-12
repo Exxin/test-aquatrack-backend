@@ -17,7 +17,7 @@ import {
   refreshUserSessionController,
 } from '../controllers/auth.js';
 import { validateBody } from '../middlewares/validateBody.js';
-import env from "../utils/env.js";
+import { env } from "../utils/env.js";
 
 const router = Router();
 
