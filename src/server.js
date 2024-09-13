@@ -70,7 +70,7 @@ app.get('/auth/google/callback', async (req, res) => {
                 code: code,
                 client_id: 'YOUR_CLIENT_ID',
                 client_secret: 'YOUR_CLIENT_SECRET',
-                redirect_uri: 'https://aquatrack-one.vercel.app/auth/google/callback',
+                redirect_uri: 'https://aquatrack-one.vercel.app/tracker',
                 grant_type: 'authorization_code',
             },
         });
