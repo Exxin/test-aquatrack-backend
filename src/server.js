@@ -99,7 +99,7 @@ const getUserInfo = async (accessToken, res) => {
         await saveUserData(userData);
 
         // Перенаправлення на ваш фронтенд
-        res.redirect('https://aquatrack-one.vercel.app/tracker');
+        res.redirect('/tracker');
     } catch (error) {
         console.error('Error fetching user info:', error);
         res.status(500).send('Error');
