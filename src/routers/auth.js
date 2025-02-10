@@ -2,14 +2,16 @@ import { Router } from 'express';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 import {
   loginUserSchema,
-  // loginWithGoogleOAuthSchema,
+  loginWithGoogleOAuthSchema,
   registerUserSchema,
   requestResetEmailSchema,
   resetPasswordSchema,
 } from '../validation/auth.js';
 
 import {
+  getGoogleOAuthUrlController,
   loginUserController,
+  loginWithGoogleController,
   registerUserController,
   requestResetEmailController,
   resetPasswordController,
@@ -17,30 +19,16 @@ import {
   refreshUserSessionController,
 } from '../controllers/auth.js';
 import { validateBody } from '../middlewares/validateBody.js';
-// import { env } from "../utils/env.js";
 
 const router = Router();
 
-// const client_id = env('GOOGLE_AUTH_CLIENT_ID');
-// const redirect_uri = env('GOOGLE_AUTH_REDIRECT_URI');
-// const scope = 'email profile';
-// const response_type = 'code';
-// const access_type = 'offline';
-// const include_granted_scopes = 'true';
+router.get('/get-oauth-url', ctrlWrapper(getGoogleOAuthUrlController));
 
-router.get('/auth/google/callback', (req, res) => {
-  // const authURL = `https://accounts.google.com/o/oauth2/v2/auth?` +
-  //   `client_id=${client_id}&` +
-  //   `redirect_uri=${redirect_uri}&` +
-  //   `scope=${encodeURIComponent(scope)}&` +
-  //   `response_type=${response_type}&` +
-  //   `access_type=${access_type}&` +
-  //   `include_granted_scopes=${include_granted_scopes}`;
-
-  // res.redirect(authURL);
-  res.redirect('/tracker');
-});
-
+router.post(
+  '/confirm-oauth',
+  validateBody(loginWithGoogleOAuthSchema),
+  ctrlWrapper(loginWithGoogleController),
+);
 router.post(
   '/register',
   validateBody(registerUserSchema),
